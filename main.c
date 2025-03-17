@@ -1,21 +1,34 @@
-
 #include <stdio.h>
-#include <stdlib.h>
 #include "functions.h"
-#include <windows.h>
-int main(int argc, char *argv[]) {
+
+
+
+int main(int argc, char* argv[]) {
     if (argc < 2) {
-        printf("использование: %s <имя файла>\n", argv[0]);
+        printf("Using: %s <file_name>\n", argv[0]);
         return 1;
     }
-    SetConsoleOutputCP(CP_UTF8);
-    const char *filename = argv[1];
 
-    write_to_file(filename);
-    read_from_file(filename);
-    find_min_word(filename);
-    swap_first_two_words(filename);
-    read_from_file(filename);
+    char* filename = argv[1];
 
+
+    // Запись в файл
+    inputfile(filename);
+    printf("Result is recorded '%s'.\n", filename);
+
+    // Чтение из файла
+    outputfile(filename);
+
+    // Подсчёт суммы цифр
+    sum_numbers(filename);
+
+    swap_spaces(filename);
+
+    puts("Result:");
+    outputfile(filename);
+
+
+
+    
     return 0;
 }
